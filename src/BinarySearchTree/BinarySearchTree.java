@@ -5,12 +5,11 @@ import java.util.List;
 
 public class BinarySearchTree {
   private Node root;
-  private int treeLevel;
   private List<Node> nodes;
 
   public BinarySearchTree() {
     this.root = null;
-    this.treeLevel = 0;
+    this.nodes = new ArrayList<>();
   }
 
   public Node getRoot() {
@@ -21,7 +20,6 @@ public class BinarySearchTree {
     Node newNode = new Node(value);
     if (root == null) {
       root = newNode;
-      nodes = new ArrayList<>();
       nodes.add(root);
     } else {
       Node current = root;
@@ -46,16 +44,27 @@ public class BinarySearchTree {
       }
     }
   }
+  public int getNodeLevel(Node node, int value) {
 
-  public Node findNode(Node node, int value) {
     if (node.getValue() == value) {
-      return node;
+      return 0;
     } else if (value < node.getValue()) {
-      return findNode(node.getLeft(), value);
+      return 1 + getNodeLevel(node.getLeft(), value);
     } else {
-      return findNode(node.getRight(), value);
+      return 1 + getNodeLevel(node.getRight(), value);
     }
+
   }
+  public int getTreeLevel(Node node) {
+    if (node == null) {
+        return 0;
+    }
+    int leftLevel = getTreeLevel(node.getLeft());
+    int rightLevel = getTreeLevel(node.getRight());
+
+    return Math.max(leftLevel, rightLevel) + 1;
+}
+
 
   public void printNodeDepth() {
     printNodeDepth(root, 0);
