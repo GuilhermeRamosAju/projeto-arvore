@@ -10,7 +10,7 @@ public class BinarySearchTree {
 
   public BinarySearchTree() {
     this.root = null;
-    this.treeLevel = 0;
+    this.nodes = new ArrayList<>();
   }
 
   public Node getRoot() {
@@ -21,7 +21,6 @@ public class BinarySearchTree {
     Node newNode = new Node(value);
     if (root == null) {
       root = newNode;
-      nodes = new ArrayList<>();
       nodes.add(root);
     } else {
       Node current = root;
@@ -46,39 +45,14 @@ public class BinarySearchTree {
       }
     }
   }
+  public int getNodeLevel(Node node, int value) {
 
-  public Node findNode(Node node, int value) {
     if (node.getValue() == value) {
-      return node;
-    } else if (value < node.getValue()) {
-      return findNode(node.getLeft(), value);
-    } else {
-      return findNode(node.getRight(), value);
-    }
-  }
-
-  public void printNodeDepth() {
-    printNodeDepth(root, 0);
-  }
-
-  private void printNodeDepth(Node node, int depth) {
-    if (node == null) {
-      return;
-    }
-
-    System.out.println("Valor: " + node.getValue() + ", Profundidade: " + depth);
-
-    printNodeDepth(node.getLeft(), depth + 1);
-    printNodeDepth(node.getRight(), depth + 1);
-  }
-
-  public int getTreeDepth() {
-    return getTreeDepth(root);
-  }
-
-  private int getTreeDepth(Node node) {
-    if (node == null) {
       return 0;
+    } else if (value < node.getValue()) {
+      return 1 + getNodeLevel(node.getLeft(), value);
+    } else {
+      return 1 + getNodeLevel(node.getRight(), value);
     }
 
     int leftDepth = getTreeDepth(node.getLeft());
