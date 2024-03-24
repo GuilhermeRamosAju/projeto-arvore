@@ -30,22 +30,22 @@ public class Main {
 
             int choice = scanner.nextInt();
 
+            Node root = tree.getRoot();
             switch (choice) {
                 case 0:
                     System.out.print("Valor do nó: ");
                     int nodeValue = scanner.nextInt();
-                    Node root = tree.getRoot();
                     System.out.println("Nível do nó: " + tree.getNodeLevel(root, nodeValue));
                     break;
-                // case 1:
-                //     System.out.println("Nível da árvore: " + tree.getTreeLevel());
-                //     break;
+                case 1:
+                    System.out.println("Nível da árvore: " + tree.getTreeLevel(root));
+                    break;
                 // case 2:
                 //     tree.printNodeDepth();
                 //     break;
-                // case 3:
-                //     System.out.println("Profundidade da árvore: " + tree.getTreeDepth());
-                //     break;
+                case 3:
+                    System.out.println("Profundidade da árvore: " + tree.getTreeDepth());
+                    break;
                 // case 4:
                 //     tree.printNodeHeight();
                 //     break;
@@ -56,6 +56,8 @@ public class Main {
                 //     tree.printTree();
                 //     break;
                 case 7:
+                    scanner.close();
+                    System.out.println("Saindo...");
                     System.exit(0);
                     break;
                 default:

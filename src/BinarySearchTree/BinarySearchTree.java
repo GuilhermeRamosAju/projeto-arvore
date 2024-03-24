@@ -5,7 +5,6 @@ import java.util.List;
 
 public class BinarySearchTree {
   private Node root;
-  private int treeLevel;
   private List<Node> nodes;
 
   public BinarySearchTree() {
@@ -53,6 +52,42 @@ public class BinarySearchTree {
       return 1 + getNodeLevel(node.getLeft(), value);
     } else {
       return 1 + getNodeLevel(node.getRight(), value);
+    }
+
+  }
+  public int getTreeLevel(Node node) {
+    if (node == null) {
+        return 0;
+    }
+    int leftLevel = getTreeLevel(node.getLeft());
+    int rightLevel = getTreeLevel(node.getRight());
+
+    return Math.max(leftLevel, rightLevel) + 1;
+}
+
+
+  public void printNodeDepth() {
+    printNodeDepth(root, 0);
+  }
+
+  private void printNodeDepth(Node node, int depth) {
+    if (node == null) {
+      return;
+    }
+
+    System.out.println("Valor: " + node.getValue() + ", Profundidade: " + depth);
+
+    printNodeDepth(node.getLeft(), depth + 1);
+    printNodeDepth(node.getRight(), depth + 1);
+  }
+
+  public int getTreeDepth() {
+    return getTreeDepth(root);
+  }
+
+  private int getTreeDepth(Node node) {
+    if (node == null) {
+      return 0;
     }
 
     int leftDepth = getTreeDepth(node.getLeft());
