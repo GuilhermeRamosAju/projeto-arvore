@@ -57,7 +57,7 @@ public class BinarySearchTree {
   }
   public int getTreeLevel(Node node) {
     if (node == null) {
-        return 0;
+        return -1;
     }
     int leftLevel = getTreeLevel(node.getLeft());
     int rightLevel = getTreeLevel(node.getRight());
