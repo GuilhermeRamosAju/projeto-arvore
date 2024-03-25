@@ -40,9 +40,9 @@ public class Main {
                 case 1:
                     System.out.println("Nível da árvore: " + tree.getTreeLevel(root));
                     break;
-                // case 2:
-                //     tree.printNodeDepth();
-                //     break;
+                case 2:
+                    tree.printNodeDepth();
+                    break;
                 case 3:
                     System.out.println("Profundidade da árvore: " + tree.getTreeDepth());
                     break;
