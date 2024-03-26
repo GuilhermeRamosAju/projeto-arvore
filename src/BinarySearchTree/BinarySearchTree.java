@@ -1,83 +1,99 @@
-// Criação da árvore genérica, com os métodos addChild, removeChild e printTree.
-// Obs: a função printTree exibe os nós com seus respectivos níveis e os filhos vêm logo abaixo do pai.
 package BinarySearchTree;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class BinarySearchTree<T> {
-    public class Node{
-        private int value;
-        private Node left = null;
-        private Node right = null;
+public class BinarySearchTree {
+  private Node root;
+  private List<Node> nodes;
 
-        public int getValue() {
-            return value;
+  public BinarySearchTree() {
+    this.root = null;
+    this.nodes = new ArrayList<>();
+  }
+
+  public Node getRoot() {
+    return root;
+  }
+
+  public void insert(int value) {
+    Node newNode = new Node(value);
+    if (root == null) {
+      root = newNode;
+      nodes.add(root);
+    } else {
+      Node current = root;
+      Node parent;
+      while (true) {
+        parent = current;
+        if (value < current.getValue()) {
+          current = current.getLeft();
+          if (current == null) {
+            parent.setLeft(newNode);
+            nodes.add(newNode);
+            return;
+          }
+        } else {
+          current = current.getRight();
+          if (current == null) {
+            parent.setRight(newNode);
+            nodes.add(newNode);
+            return;
+          }
         }
-
-        public Node getLeft() {
-            return left;
-        }
-
-        public Node getRight() {
-            return right;
-        }
-
-        public Node(int data) {
-            value = data;
-        }
+      }
     }
-    Node root;
+  }
+  public int getNodeLevel(Node node, int value) {
 
-    public Node getRoot() {
-        return root;
+    if (node.getValue() == value) {
+      return 0;
+    } else if (value < node.getValue()) {
+      return 1 + getNodeLevel(node.getLeft(), value);
+    } else {
+      return 1 + getNodeLevel(node.getRight(), value);
     }
 
-    public BinarySearchTree() {
-        root = null;
+  }
+  public int getTreeLevel(Node node) {
+    if (node == null) {
+        return -1;
     }
+    int leftLevel = getTreeLevel(node.getLeft());
+    int rightLevel = getTreeLevel(node.getRight());
 
-    public void delete(int value){
-        root = deleteNode(root, value);
-    }
-
-    public Node deleteNode(Node root, int value){
-        if (root == null)
-            return root;
-        if (value < root.value) {
-            return deleteNode(root.left, value);
-        } else if (value > root.value) {
-            return deleteNode(root.right, value);
-        }
-        return root;
-    }
-
-    public void insert(int value){
-        root = insertNode(root, value);
-    }
-
-    public Node insertNode(Node root, int value){
-        if (root == null){
-            root = new Node(value);
-            return root;
-        }
-        if (value < root.value)
-            root.left = insertNode(root.left, value);
-        else if (value > root.value)
-            root.right = insertNode(root.right, value);
-        return root;
-    }
-
-    public boolean search(int value){
-        root = searchNode(root, value);
-        return root != null;
-    }
-    public Node searchNode(Node root, int value){
-        if (root == null || root.value == value)
-            return root;
-        if (root.value > value){
-            return searchNode(root.left, value);
-        }
-        return searchNode(root.right, value);
-    }
+    return Math.max(leftLevel, rightLevel) + 1;
 }
 
 
+  public void printNodeDepth() {
+    printNodeDepth(root, 0);
+  }
+
+  private void printNodeDepth(Node node, int depth) {
+    if (node == null) {
+      return;
+    }
+
+    System.out.println("Valor: " + node.getValue() + ", Profundidade: " + depth);
+
+    printNodeDepth(node.getLeft(), depth + 1);
+    printNodeDepth(node.getRight(), depth + 1);
+  }
+
+  public int getTreeDepth() {
+    return getTreeDepth(root);
+  }
+
+  private int getTreeDepth(Node node) {
+    if (node == null) {
+      return 0;
+    }
+
+    int leftDepth = getTreeDepth(node.getLeft());
+    int rightDepth = getTreeDepth(node.getRight());
+
+    return Math.max(leftDepth, rightDepth) + 1;
+  }
+
+}
