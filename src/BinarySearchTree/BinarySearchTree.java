@@ -3,6 +3,7 @@ package BinarySearchTree;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BinarySearchTree {
   private Node root;
   private List<Node> nodes;
@@ -96,4 +97,26 @@ public class BinarySearchTree {
     return Math.max(leftDepth, rightDepth) + 1;
   }
 
+  public void printTree(Node root){
+    if (root == null) {
+      System.out.println("Árvore Inexistente!");
+    }
+
+    StringBuilder tree = new StringBuilder();
+
+    for (Node node : nodes){
+      if (node == this.root){
+        tree.append(node.getValue()).append("\n");
+        continue;
+      }
+      StringBuilder toAdd = new StringBuilder();
+      for (int i = 1; i <= this.getTreeLevel(root) ; i++){
+        toAdd.append("  ");
+        if (this.getNodeLevel(root, node.getValue()) == i){
+          tree.append(toAdd.append(node.getValue()).append("\n"));
+        }
+      }
+    }
+    System.out.println(tree);
+  }
 }

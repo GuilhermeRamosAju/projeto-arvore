@@ -52,9 +52,9 @@ public class Main {
                 // case 5:
                 //     System.out.println("Altura da árvore: " + tree.getTreeHeight());
                 //     break;
-                // case 6:
-                //     tree.printTree();
-                //     break;
+                case 6:
+                     tree.printTree(root);
+                     break;
                 case 7:
                     scanner.close();
                     System.out.println("Saindo...");
