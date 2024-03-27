@@ -112,7 +112,8 @@ public class BinarySearchTree {
       StringBuilder toAdd = new StringBuilder();
       for (int i = 1; i <= this.getTreeLevel(root) ; i++){
         toAdd.append("  ");
-        if (this.getNodeLevel(root, node.getValue()) == i){
+          assert root != null;
+          if (this.getNodeLevel(root, node.getValue()) == i){
           tree.append(toAdd.append(node.getValue()).append("\n"));
         }
       }
