@@ -128,27 +128,23 @@ public class BinarySearchTree {
         printNodeHeights(node.getRight(), calculator);
     }
 
-    public void printTree(Node root) {
+    public void printTree(Node root, int spaces) {
+        final int control = 5;
+
         if (root == null) {
-            System.out.println("Árvore Inexistente!");
+            return;
         }
 
-        StringBuilder tree = new StringBuilder();
+        spaces += control;
 
-        for (Node node : nodes) {
-            if (node == this.root) {
-                tree.append(node.getValue()).append("\n");
-                continue;
-            }
-            StringBuilder toAdd = new StringBuilder();
-            for (int i = 1; i <= this.getTreeLevel(root); i++) {
-                toAdd.append("  ");
-                assert root != null;
-                if (this.getNodeLevel(root, node.getValue()) == i) {
-                    tree.append(toAdd.append(node.getValue()).append("\n"));
-                }
-            }
-        }
-        System.out.println(tree);
+        printTree(root.getRight(), spaces);
+
+        System.out.print("\n");
+        for (int i = control; i < spaces; i++)
+            System.out.print(" ");
+        System.out.print(root.getValue() + "\n");
+
+        printTree(root.getLeft(), spaces);
     }
+    
 }
