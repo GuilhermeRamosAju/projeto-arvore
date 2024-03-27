@@ -47,14 +47,16 @@ public class Main {
                     System.out.println("Profundidade da árvore: " + tree.getTreeDepth());
                     break;
                 // case 4:
-                //     tree.printNodeHeight();
+                // System.out.print("Valor do nó: ");
+                // scanner.nextInt();
+                //     tree.printNodeHeight(nodeValue);
                 //     break;
-                // case 5:
-                //     System.out.println("Altura da árvore: " + tree.getTreeHeight());
-                //     break;
-                // case 6:
-                //     tree.printTree();
-                //     break;
+                case 5:
+                    System.out.println("Altura da árvore: " + tree.treeHeight(root));
+                    break;
+                case 6:
+                    tree.printTree(root);
+                    break;
                 case 7:
                     scanner.close();
                     System.out.println("Saindo...");
