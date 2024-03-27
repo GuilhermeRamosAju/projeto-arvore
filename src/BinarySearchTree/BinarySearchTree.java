@@ -118,7 +118,7 @@ public class BinarySearchTree {
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
-    static void printNodeHeights(Node node, BinarySearchTree calculator) {
+    void printNodeHeights(Node node, BinarySearchTree calculator) {
         if (node == null)
             return;
 

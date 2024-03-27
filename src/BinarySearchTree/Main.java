@@ -53,7 +53,7 @@ public class Main {
                      System.out.println("Altura da árvore: " + tree.treeHeight(root));
                      break;
                  case 6:
-                     tree.printTree(root, 0);
+                     tree.printTree(root);
                      break;
                 case 7:
                     scanner.close();
