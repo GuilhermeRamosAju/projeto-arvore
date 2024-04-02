@@ -163,4 +163,44 @@ public class BinarySearchTree {
 //        }
 //        System.out.println(tree);
     }
+
+    public void printNLR(Node root) {
+
+        if (root == null) {
+            return;
+        }
+
+        System.out.print(root.getValue() + " ");
+
+        printNLR(root.getLeft());
+
+        printNLR(root.getRight());
+
+    }
+
+    public void printLRN(Node root) {
+
+        if (root == null) {
+            return;
+        }
+
+        printLRN(root.getLeft());
+
+        printLRN(root.getRight());
+
+        System.out.print(root.getValue() + " ");
+    }
+
+    public void printLNR(Node root) {
+
+        if (root == null) {
+            return;
+        }
+
+        printLNR(root.getLeft());
+
+        System.out.print(root.getValue() + " ");
+
+        printLNR(root.getRight());
+    }
 }
