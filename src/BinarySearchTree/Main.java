@@ -25,7 +25,10 @@ public class Main {
             System.out.println("4. Altura de cada nó");
             System.out.println("5. Altura da árvore");
             System.out.println("6. Imprimir árvore com identação");
-            System.out.println("7. Sair");
+            System.out.println("7. Imprimir nós no percurso LRN");
+            System.out.println("8. Imprimir nós no percurso NLR");
+            System.out.println("9. Imprimir nós no percurso LNR");
+            System.out.println("10. Sair");
             System.out.print("Escolha uma opção: ");
 
             int choice = scanner.nextInt();
@@ -55,11 +58,19 @@ public class Main {
                  case 6:
                      tree.printTree(root, 0);
                      break;
-                case 7:
+                 case 7:
+                     tree.printLRN(root);
+                     break;
+                 case 8:
+                     tree.printNLR(root);
+                     break;
+                 case 9:
+                     tree.printLNR(root);
+                     break;
+                 case 10:
                     scanner.close();
                     System.out.println("Saindo...");
                     System.exit(0);
-                    break;
                 default:
                     System.out.println("Opção inválida!");
                     break;
